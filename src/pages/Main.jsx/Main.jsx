@@ -1,5 +1,6 @@
 import { Container, Box, Typography } from '@mui/material'
 import React from 'react'
+import Localizator from '../../common/components/Localizator'
 
 const Main = () => {
   return (
@@ -9,20 +10,6 @@ const Main = () => {
       }}
       maxWidth="xl"
     >
-      <Box
-        sx={{
-          bgcolor: 'primary.light',
-        }}
-      >
-        <Typography>Hello Main</Typography>
-      </Box>
-      <Box
-        sx={{
-          bgcolor: 'primary.light',
-        }}
-      >
-        <Typography>Hello Main</Typography>
-      </Box>
       <Box
         sx={{
           bgcolor: 'primary.light',

@@ -14,7 +14,7 @@ const Footer = () => {
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: { xs: 'column', sm: 'column', md: 'row' },
-        p: { xs: 3, sm: 4, md: 3, xl: 6 },
+        p: { xs: 1, sm: 4, md: 3, xl: 6 },
       }}
     >
       <Typography

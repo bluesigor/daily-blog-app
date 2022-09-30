@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   theme: 'light',
-  language: 'en',
+  language: 'eng',
 }
 
-export const userSettingsSlice = createSlice({
+const userSettingsSlice = createSlice({
   name: 'userSettings',
   initialState,
   reducers: {
@@ -15,9 +15,15 @@ export const userSettingsSlice = createSlice({
         theme: action.payload,
       }
     },
+    setLanguage: (state, action) => {
+      return {
+        ...state,
+        language: action.payload,
+      }
+    },
   },
 })
 
-export const { setMode } = userSettingsSlice.actions
+export const { setMode, setLanguage } = userSettingsSlice.actions
 
 export default userSettingsSlice.reducer

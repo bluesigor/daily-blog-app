@@ -1,24 +1,13 @@
-import { ThemeProvider } from '@mui/material'
-import { BrowserRouter, Outlet } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import './App.css'
-import Routing from './assets/Routes/Routing'
-import Layout from './assets/Routes/Layout'
-
-import useSwitchMode from './utils/hooks/useSwitchMode'
+import Provider from './utils/hooks/Provider'
 
 function App() {
-  const { theme } = useSwitchMode()
-
   return (
     <div className="App">
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <Layout>
-            <Routing />
-            <Outlet />
-          </Layout>
-        </ThemeProvider>
+        <Provider />
       </BrowserRouter>
     </div>
   )
