@@ -4,18 +4,15 @@ const useBurger = () => {
   const [anchorElUser, setAnchorElUser] = useState(null)
   const [isOpen, setOpen] = useState(false)
 
-  const handleOpenUserMenu = useCallback(
-    (event) => {
-      setAnchorElUser(event.currentTarget)
-      setOpen(true)
-    },
-    [isOpen, anchorElUser],
-  )
+  const handleOpenUserMenu = useCallback((event) => {
+    setAnchorElUser(event.currentTarget)
+    setOpen(true)
+  }, [])
 
   const handleCloseUserMenu = useCallback(() => {
     setAnchorElUser(null)
     setOpen(false)
-  }, [anchorElUser, isOpen])
+  }, [])
 
   return {
     setOpen,

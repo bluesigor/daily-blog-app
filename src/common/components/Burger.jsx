@@ -1,12 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Spin as Hamburger } from 'hamburger-react'
-
 import { IconButton, Menu, MenuItem, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import useBurger from '../../utils/hooks/useBurger'
-import { Link } from 'react-router-dom'
 
-const settings = ['Home', 'Profile', 'Login']
+import useBurger from '../../utils/hooks/useBurger'
+import { settings } from '../../utils/constants/consts'
+import Localizator from './Localizator'
 
 const Burger = () => {
   const {
@@ -60,11 +60,13 @@ const Burger = () => {
             >
               <Typography
                 sx={{
+                  fontSize: { xs: 16, sm: 20, md: 25 },
                   color: 'primary.text',
+                  textTransform: 'capitalize',
                 }}
                 textAlign="center"
               >
-                {setting}
+                <Localizator text={setting} />
               </Typography>
             </Link>
           </MenuItem>
