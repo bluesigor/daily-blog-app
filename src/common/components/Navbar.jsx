@@ -1,19 +1,19 @@
 import React from 'react'
-import {
-  AppBar,
-  Button,
-  Box,
-  Container,
-  Toolbar,
-  Typography,
-} from '@mui/material'
 import { Link } from 'react-router-dom'
+import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 import Burger from './Burger'
 import SwitchMode from './SwitchMode'
 import TranslationSwitch from './TranslationSwitch'
+import Login from './Login'
+import Logout from './Logout'
+import Account from './Account'
+import { isLoggedInSelector } from '../../store/selectors/userDataSelectors'
 
 const Navbar = () => {
+  const isLoggedIn = useSelector(isLoggedInSelector)
+
   return (
     <AppBar
       sx={{
@@ -33,7 +33,6 @@ const Navbar = () => {
           sx={{
             px: { xs: 1 },
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
           }}
         >
@@ -45,39 +44,44 @@ const Navbar = () => {
               fontWeight: 800,
             }}
           >
-            Daily Blog
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+              to="/"
+            >
+              Daily Blog
+            </Link>
           </Typography>
           <Box
             sx={{
               display: 'flex',
-              flex: 2,
+              flex: { xs: 0, sm: 4 },
+              justifyContent: 'space-between',
               alignItems: 'center',
             }}
           >
-            <Button
-              sx={{
-                display: { xs: 'none', sm: 'none', md: 'flex' },
-                color: 'primary.white',
-              }}
+            <Box
+              flex={3}
+              display={{ xs: 'none', sm: 'none', md: 'flex' }}
+              alignItems="center"
+              flexDirection="row"
+              justifyContent="space-between"
             >
-              <Link
-                style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                }}
-                to="login"
-              >
-                <Typography
-                  sx={{
-                    fontWeight: 100,
-                  }}
-                >
-                  Login
-                </Typography>
-              </Link>
-            </Button>
-            <SwitchMode />
-            <TranslationSwitch />
+              {isLoggedIn && <Account />}
+              {isLoggedIn ? <Logout /> : <Login />}
+            </Box>
+            <Box
+              ml={2}
+              flex={2}
+              display="flex"
+              alignItems="center"
+              flexDirection="row"
+            >
+              <SwitchMode />
+              <TranslationSwitch />
+            </Box>
             <Burger />
           </Box>
         </Toolbar>

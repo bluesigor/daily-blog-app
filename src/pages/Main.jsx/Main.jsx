@@ -1,6 +1,5 @@
 import { Container, Box, Typography } from '@mui/material'
 import React from 'react'
-import Localizator from '../../common/components/Localizator'
 
 const Main = () => {
   return (

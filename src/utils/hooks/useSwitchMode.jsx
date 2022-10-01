@@ -1,11 +1,13 @@
 import { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { createTheme } from '@mui/material/styles'
+
 import { setMode } from '../../store/reducers/userSettingsSlice'
+import { userThemeSelector } from '../../store/selectors/userSettingsSelectors'
 
 const useSwitchMode = () => {
   const dispatch = useDispatch()
-  const userTheme = useSelector((state) => state.userSettings.theme)
+  const userTheme = useSelector(userThemeSelector)
 
   const theme = createTheme({
     palette: {
@@ -36,7 +38,7 @@ const useSwitchMode = () => {
     if (userTheme === 'light') {
       dispatch(setMode('dark'))
     }
-  }, [userTheme])
+  }, [dispatch, userTheme])
 
   return { theme, handleMode }
 }

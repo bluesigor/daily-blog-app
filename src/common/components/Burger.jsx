@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom'
 import { Spin as Hamburger } from 'hamburger-react'
 import { IconButton, Menu, MenuItem, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import { useSelector } from 'react-redux'
 
 import useBurger from '../../utils/hooks/useBurger'
-import { settings } from '../../utils/constants/consts'
 import Localizator from './Localizator'
+import {
+  isLoggedInSelector,
+  nameSelector,
+} from '../../store/selectors/userDataSelectors'
+import Logout from './Logout'
+import Login from './Login'
 
 const Burger = () => {
   const {
@@ -16,6 +22,8 @@ const Burger = () => {
     isOpen,
     setOpen,
   } = useBurger()
+  const isLoggedIn = useSelector(isLoggedInSelector)
+  const name = useSelector(nameSelector)
 
   return (
     <Box
@@ -50,13 +58,32 @@ const Burger = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
+        <MenuItem onClick={handleCloseUserMenu}>
+          <Link
+            style={{
+              textDecoration: 'none',
+            }}
+            to="/"
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: 16, sm: 20, md: 25 },
+                color: 'primary.text',
+                textTransform: 'capitalize',
+              }}
+              textAlign="center"
+            >
+              <Localizator text="Home" />
+            </Typography>
+          </Link>
+        </MenuItem>
+        {isLoggedIn && (
+          <MenuItem onClick={handleCloseUserMenu}>
             <Link
               style={{
                 textDecoration: 'none',
               }}
-              to={setting === 'Home' ? '/' : setting}
+              to={`profile/:${name}`}
             >
               <Typography
                 sx={{
@@ -66,11 +93,20 @@ const Burger = () => {
                 }}
                 textAlign="center"
               >
-                <Localizator text={setting} />
+                <Localizator text="Profile" />
               </Typography>
             </Link>
           </MenuItem>
-        ))}
+        )}
+        {isLoggedIn ? (
+          <MenuItem onClick={handleCloseUserMenu}>
+            <Logout />
+          </MenuItem>
+        ) : (
+          <MenuItem onClick={handleCloseUserMenu}>
+            <Login />
+          </MenuItem>
+        )}
       </Menu>
     </Box>
   )
