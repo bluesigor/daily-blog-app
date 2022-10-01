@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { setLanguage } from '../../store/reducers/userSettingsSlice'
+import { preferLanguageSelector } from '../../store/selectors/userSettingsSelectors'
 
 const useChoose = () => {
   const [isChoosen, setIsChoosen] = useState({
@@ -10,7 +11,7 @@ const useChoose = () => {
   })
 
   const dispatch = useDispatch()
-  const userLang = useSelector((state) => state.userSettings.language)
+  const userLang = useSelector(preferLanguageSelector)
 
   const setEngChoosen = () => {
     if (userLang === 'uk') {

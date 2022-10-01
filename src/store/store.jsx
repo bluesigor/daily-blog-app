@@ -10,16 +10,19 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+
 import userSettingsReducer from './reducers/userSettingsSlice'
+import userDataReducer from './reducers/userDataSlice'
 
 const rootReducer = combineReducers({
   userSettings: userSettingsReducer,
+  userData: userDataReducer,
 })
 
 const settingsPersistConfig = {
   key: 'root',
   storage,
-  whitelist: ['userSettings'],
+  whitelist: ['userSettings', 'userData'],
 }
 
 const persistedReducer = persistReducer(settingsPersistConfig, rootReducer)

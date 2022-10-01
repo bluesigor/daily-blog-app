@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom'
 
 import './App.css'
-import Provider from './utils/hooks/Provider'
+import Provider from './utils/provider/Provider'
 
 function App() {
   return (

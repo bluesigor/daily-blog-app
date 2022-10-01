@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 
-import useSwitchMode from './useSwitchMode'
+import useSwitchMode from '../hooks/useSwitchMode'
 import Layout from '../../assets/Routes/Layout'
 import Routing from '../../assets/Routes/Routing'
 
