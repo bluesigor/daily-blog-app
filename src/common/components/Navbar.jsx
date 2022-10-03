@@ -15,34 +15,20 @@ const Navbar = () => {
   const isLoggedIn = useSelector(isLoggedInSelector)
 
   return (
-    <AppBar
-      sx={{
-        bgcolor: 'primary.main',
-        height: '90px',
-      }}
-      position="static"
-    >
-      <Container
-        sx={{
-          px: { xs: 0, sm: 1 },
-        }}
-        maxWidth="xl"
-      >
+    <AppBar bgcolor="primary.main" height="90px" position="static">
+      <Container px={{ xs: 0, sm: 1 }} maxWidth="xl">
         <Toolbar
           disableGutters
-          sx={{
-            px: { xs: 1 },
-            display: 'flex',
-            alignItems: 'center',
-          }}
+          px={{ xs: 1 }}
+          display="flex"
+          alignitems="center"
         >
           <Typography
+            display={{ xs: 'none', sm: 'block', md: 'block' }}
             variant="h6"
             component="h1"
-            sx={{
-              flex: 6,
-              fontWeight: 800,
-            }}
+            flex={6}
+            fontWeight={800}
           >
             <Link
               style={{
@@ -55,22 +41,24 @@ const Navbar = () => {
             </Link>
           </Typography>
           <Box
-            sx={{
-              display: 'flex',
-              flex: { xs: 0, sm: 4 },
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
+            display="flex"
+            flex={{ xs: 1, sm: 4 }}
+            justifyContent="space-between"
+            alignItems="center"
           >
             <Box
-              flex={3}
-              display={{ xs: 'none', sm: 'none', md: 'flex' }}
+              flex={4}
+              display="flex"
               alignItems="center"
               flexDirection="row"
               justifyContent="space-between"
             >
+              <Box display={{ xs: 'none', sm: 'none', md: 'block' }}></Box>
+              <Box display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                {isLoggedIn ? <Logout /> : <Login />}
+              </Box>
+
               {isLoggedIn && <Account />}
-              {isLoggedIn ? <Logout /> : <Login />}
             </Box>
             <Box
               ml={2}

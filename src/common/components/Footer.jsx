@@ -10,7 +10,7 @@ const Footer = () => {
         bottom: '0',
         bgcolor: 'primary.main',
         height: '130px',
-        position: 'fixed',
+        position: { xs: 'relative', sm: 'relative', md: 'fixed' },
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: { xs: 'column', sm: 'column', md: 'row' },

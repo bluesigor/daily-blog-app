@@ -13,12 +13,12 @@ const Account = () => {
   const name = useSelector(nameSelector)
 
   return (
-    <Box
-      display={{ xs: 'none', sm: 'none', md: 'flex' }}
-      flexDirection="row"
-      alignItems="center"
-    >
-      <Typography fontSize={18} component="p">
+    <Box display="flex" flexDirection="row" alignItems="center">
+      <Typography
+        display={{ xs: 'none', sm: 'none', md: 'inline' }}
+        fontSize={18}
+        component="p"
+      >
         {name}
       </Typography>
       <IconButton size="small" sx={{ ml: 2 }} aria-haspopup="true">

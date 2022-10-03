@@ -14,7 +14,7 @@ const TranslationSwitch = () => {
         onClick={setEngChoosen}
         variant={isChoosen.eng ? 'contained' : 'null'}
         sx={{
-          fontSize: { xs: '16px', sm: '18px' },
+          fontSize: { xs: '12px', sm: '14px' },
           color: 'primary.white',
         }}
       >
@@ -24,7 +24,7 @@ const TranslationSwitch = () => {
         onClick={setUkChoosen}
         variant={isChoosen.uk ? 'contained' : 'null'}
         sx={{
-          fontSize: { xs: '16px', sm: '18px' },
+          fontSize: { xs: '12px', sm: '14px' },
           color: 'primary.white',
         }}
       >
